@@ -22,5 +22,11 @@ describe('UI Controls', async() => {
     await $$(".customradio")[0].$("span").click()
     //using mocha framework's 'not' to negate our assertion.
     await expect(modal).not.toBeDisplayed()
+    const dropdown = await $('select.form-control')
+    await dropdown.selectByAttribute('value','teach')
+    await browser.pause(3000)
+    await dropdown.selectByVisibleText("Consultant")
+    await browser.pause(3000)
+    console.log(await dropdown.getValue())
     })
 })
