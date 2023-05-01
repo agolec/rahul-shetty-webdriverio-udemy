@@ -31,6 +31,9 @@ describe('UI Controls', async() => {
     await browser.pause(3000)
     console.log(await dropdown.getValue())
     expectchai(await dropdown.getValue()).to.equal("stud")
-    
+    })
+
+    it("Dynamic Dropdown Controls", async()=>{
+
     })
 })
