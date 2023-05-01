@@ -1,10 +1,10 @@
 {
     "configurations": [
         {
-            "name": "run select spec",
+            "name": "WebDriverIO Test",
             "type": "node",
             "request": "launch",
-            "args": ["wdio.conf.js", "--spec", "${file}"],
+            "args": ["wdio.conf.js"],
             "cwd": "${workspaceFolder}",
             "autoAttachChildProcesses": true,
             "program": "${workspaceRoot}/node_modules/@wdio/cli/bin/wdio.js",
