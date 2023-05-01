@@ -1,3 +1,5 @@
+const expectchai = require('chai').expect
+
 describe('UI Controls', async() => {
     it("UI Controls Test Suite", async () => {
     await browser.url('https://rahulshettyacademy.com/loginpagePractise/')
@@ -24,9 +26,11 @@ describe('UI Controls', async() => {
     await expect(modal).not.toBeDisplayed()
     const dropdown = await $('select.form-control')
     await dropdown.selectByAttribute('value','teach')
-    await browser.pause(3000)
     await dropdown.selectByVisibleText("Consultant")
+    await dropdown.selectByIndex(0)
     await browser.pause(3000)
     console.log(await dropdown.getValue())
+    expectchai(await dropdown.getValue()).to.equal("stud")
+    
     })
 })
