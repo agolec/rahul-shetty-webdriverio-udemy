@@ -24,3 +24,15 @@ const expectchai = require('chai').expect
 This is so we can differentiate between webdriverIO expect, called 'expect', and chai's expect library, which has the same name.
 
 We are aliasing the chai library.
+
+
+CHAI LIBRARY 
+
+.equal vs .eql methods.
+
+equal: Asserts that a target is strictly (===) equal to the given value.
+eql: Asserts that the target is deeply equal to the value.
+
+Strictly equal means you are comparing exactly the same object to itself. It's checking whether some instance of an object is the same instance as the calling object.
+
+Deeply equal eql means that the two objects can be different, but every proparty between them has the same value.
