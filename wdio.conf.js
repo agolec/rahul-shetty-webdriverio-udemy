@@ -28,7 +28,8 @@ exports.config = {
         //'./test/specs/rahul-shetty-pom-login.js' //for pom rahul shetty work.
        // './test/specs/example.e2e.js' //for the youtube test lecture? Demo test.
        //'./test/specs/uiControls.js' //for pom rahul shetty work.
-       './test/specs/functional-scenarios.js' //for functional scenario.js file.
+       //'./test/specs/functional-scenarios.js' //for functional scenario.js file.
+       './test/specs/eCommerceE2E.js' //for functional test lectures that aren't using functional-scenarios.js
 
     ],
     // Patterns to exclude.
