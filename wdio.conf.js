@@ -23,8 +23,13 @@ exports.config = {
     // will be called from there.
     //
     specs: [
-        //'./test/specs/**/*.js'
-        './test/specs/firstTestRahulShetty.js'
+        //'./test/specs/**/*.js'        // to run all the tests inside the specs directory.
+        //'./test/specs/firstTestRahulShetty.js' // to run the first test scripts that didn't use POM.
+        //'./test/specs/rahul-shetty-pom-login.js' //for pom rahul shetty work.
+       // './test/specs/example.e2e.js' //for the youtube test lecture? Demo test.
+       //'./test/specs/uiControls.js' //for pom rahul shetty work.
+       './test/specs/functional-scenarios.js' //for functional scenario.js file.
+
     ],
     // Patterns to exclude.
     exclude: [
@@ -117,12 +122,12 @@ exports.config = {
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
     services: ['chromedriver'],
-    ['selenium-standalone', {
-         drivers: {
-             firefox: '0.33.0', chrome: true, chromiumedge: 'latest' 
-            } 
-        }
-    ]
+    // ['selenium-standalone', {
+    //      drivers: {
+    //          firefox: '0.33.0', chrome: true, chromiumedge: 'latest' 
+    //         } 
+    //     }
+    //] Commenting block out for selenium-standalone since this doesn't work properly?
   
     
     // Framework you want to run your specs with.

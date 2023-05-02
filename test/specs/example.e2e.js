@@ -1,13 +1,13 @@
 const LoginPage = require('../pageobjects/login.page')
 const SecurePage = require('../pageobjects/secure.page')
 
-describe('My Login application', () => {
-    it('should login with valid credentials', () => {
-        LoginPage.open()
+describe('My Login application', async () => {
+    it('should login with valid credentials', async () => {
+        await LoginPage.open()
 
-        LoginPage.login('tomsmith', 'SuperSecretPassword!')
-        expect(SecurePage.flashAlert).toBeExisting()
-        expect(SecurePage.flashAlert).toHaveTextContaining(
+        await LoginPage.login('tomsmith', 'SuperSecretPassword!')
+        await expect(await SecurePage.flashAlert).toBeExisting()
+        await expect(await SecurePage.flashAlert).toHaveTextContaining(
             'You logged into a secure area!')
     })
 
