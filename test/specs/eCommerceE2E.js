@@ -1,3 +1,5 @@
+const expectchai = require('chai').expect
+
 describe('Ecommerce Application', async () => {
 
     it('End to End test', async () => {
@@ -23,7 +25,16 @@ describe('Ecommerce Application', async () => {
             }
         }
         await checkoutLink.click()
-        await browser.pause(3000)
+        const productPrices = await $$("tr td:nth-child(4) strong")
+        //convert strings to integers by using the map function.
+        const sumOfProducts = (await Promise.all(await productPrices.map((async (productPrice) => parseInt((await productPrice.getText()).split(".")[1].trim())))))
+        .reduce((acc,price) => acc+price,0)
+        
+        console.log(sumOfProducts)
+        const totalValue = await $("h3 strong").getText()
+        const totalIntValue = parseInt(totalValue.split(".")[1].trim())
+
+        await expectchai(sumOfProducts).to.equal(totalIntValue)
 
     })
 })
