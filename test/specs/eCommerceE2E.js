@@ -30,11 +30,17 @@ describe('Ecommerce Application', async () => {
         const sumOfProducts = (await Promise.all(await productPrices.map((async (productPrice) => parseInt((await productPrice.getText()).split(".")[1].trim())))))
         .reduce((acc,price) => acc+price,0)
         
-        console.log(sumOfProducts)
         const totalValue = await $("h3 strong").getText()
         const totalIntValue = parseInt(totalValue.split(".")[1].trim())
-
         await expectchai(sumOfProducts).to.equal(totalIntValue)
+        await $(".btn-success").click()
+        await $("#country").setValue("ind")
+        await $(".lds-ellipsis").waitForExist({reverse: true})
+        await $("=India").click()
+        await $("input[type='submit']").click()
+        await expect($(".alert-success")).toHaveTextContaining("Success")
+
+
 
     })
 })
