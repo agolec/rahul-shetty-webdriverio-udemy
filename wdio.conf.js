@@ -25,11 +25,11 @@ exports.config = {
     specs: [
         //'./test/specs/**/*.js'        // to run all the tests inside the specs directory.
         //'./test/specs/firstTestRahulShetty.js' // to run the first test scripts that didn't use POM.
-        './test/specs/rahul-shetty-pom-login.js' //for pom rahul shetty work.
-       // './test/specs/example.e2e.js' //for the youtube test lecture? Demo test.
-       //'./test/specs/uiControls.js' //for pom rahul shetty work.
-       //'./test/specs/functional-scenarios.js' //for functional scenario.js file.
-       //'./test/specs/eCommerceE2E.js' //for functional test lectures that aren't using functional-scenarios.js
+        //'./test/specs/rahul-shetty-pom-login.js' //for pom rahul shetty work.
+        // './test/specs/example.e2e.js' //for the youtube test lecture? Demo test.
+        //'./test/specs/uiControls.js' //for pom rahul shetty work.
+        //'./test/specs/functional-scenarios.js' //for functional scenario.js file.
+       './test/specs/eCommerceE2E.js' //for functional test lectures that aren't using functional-scenarios.js
 
     ],
     // Patterns to exclude.
