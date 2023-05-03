@@ -23,7 +23,7 @@ describe('Ecommerce Application', async() => {
 
         const products = ['Nokia Edge','Blackberry']
         await browser.url('https://rahulshettyacademy.com/loginpagePractise/')
-        await loginPage.Login("rahulshettyacademy","learning123")
+        await loginPage.Login("rahulshettyacademy","learning")
         //after this, we must wait for some element that we know will be on the next page to be present.
         const checkoutLink = await $("*=Checkout")
         await checkoutLink.waitForExist() // *= are used to check element by it's text.
