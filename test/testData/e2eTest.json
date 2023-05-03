@@ -1,8 +1,8 @@
 [
     {
-        "Products":["Blackberry","Nokia Edge"]
+        "products":["Blackberry","Nokia Edge"]
     },
     {
-        "Products":["Blackberry","iphone X"]
+        "products":["Blackberry","iphone X"]
     }
 ]
