@@ -1,3 +1,4 @@
+const expectchai = require('chai').expect
 class ReviewPage
 {
     get productPrices(){
@@ -14,6 +15,9 @@ class ReviewPage
     async totalFormattedPrice(){
         const totalValue = await this.totalPrice.getText()
         const totalIntValue = parseInt(totalValue.split(".")[1].trim())
+    }
+    async assertTotalsMatchWhenAdded(sumOfProducts,totalIntValue){
+        await expectchai(sumOfProducts).to.equal(totalIntValue)
     }
 }
 module.exports = new ReviewPage()
