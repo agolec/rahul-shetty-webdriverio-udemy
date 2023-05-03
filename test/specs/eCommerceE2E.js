@@ -4,10 +4,11 @@ const shopPage = require('../page-objects-rahul-shetty/shopPage')
 const reviewPage = require('../page-objects-rahul-shetty/reviewpage')
 const fs = require('fs')
 let credentials = JSON.parse(fs.readFileSync('test/testData/LoginTest.json'))
+let productsArray = JSON.parse(fs.readFileSync('test/testData/e2eTest.json'))
 
 describe('Ecommerce Application', async () => {
     credentials.forEach(  ({username,password}) => {
-        it('Login Page Fail', async () => {
+        xit('Login Page Fail', async () => {
             await browser.url('https://rahulshettyacademy.com/loginpagePractise/')
             await expect(browser).toHaveTitleContaining('Rahul Shetty Academy')
             await loginPage.Login(username,password)
@@ -33,27 +34,28 @@ describe('Ecommerce Application', async () => {
 
         })
     })
+    productsArray.forEach(({products}) => {
+        it('End to End test', async () => {
+            
+            //const products = ['Nokia Edge','Blackberry']
+            await browser.url('https://rahulshettyacademy.com/loginpagePractise/')
+            await loginPage.Login("rahulshettyacademy","learning")
+            await shopPage.checkout.waitForExist() 
+            await shopPage.addProductsToCart(products)
 
-    xit('End to End test', async () => {
+            await shopPage.checkout.click()
+            sumOfProducts = await reviewPage.sumOfProducts()
+            totalIntValue = await reviewPage.totalFormattedPrice()
 
-        const products = ['Nokia Edge','Blackberry']
-        await browser.url('https://rahulshettyacademy.com/loginpagePractise/')
-        await loginPage.Login("rahulshettyacademy","learning")
-        await shopPage.checkout.waitForExist() 
-        await shopPage.addProductsToCart(products)
+            await reviewPage.assertTotalsMatchWhenAdded(sumOfProducts,totalIntValue)
 
-        await shopPage.checkout.click()
-        sumOfProducts = await reviewPage.sumOfProducts()
-        totalIntValue = await reviewPage.totalFormattedPrice()
+            await reviewPage.checkout.click() 
+            await reviewPage.typeCountry('ind')
+            await reviewPage.waitForEllipsisToDisapear()
+            await reviewPage.clickIndiaFromList()
+            await reviewPage.clickCheckoutSubmit()
+            await reviewPage.assertSuccessMessageAfterCheckout("Success")
 
-        await reviewPage.assertTotalsMatchWhenAdded(sumOfProducts,totalIntValue)
-
-        await reviewPage.checkout.click() // $(".btn-success")
-        await reviewPage.typeCountry('ind')
-        await reviewPage.waitForEllipsisToDisapear()
-        await reviewPage.clickIndiaFromList()
-        await reviewPage.clickCheckoutSubmit()
-        await reviewPage.assertSuccessMessageAfterCheckout("Success")
-
+        })
     })
 })
