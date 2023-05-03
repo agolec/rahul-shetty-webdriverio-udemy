@@ -19,14 +19,12 @@ describe('Ecommerce Application', async () => {
 
         await reviewPage.assertTotalsMatchWhenAdded(sumOfProducts,totalIntValue)
 
-        await $(".btn-success").click()
-        await $("#country").setValue("ind")
-        await $(".lds-ellipsis").waitForExist({reverse: true})
-        await $("=India").click()
-        await $("input[type='submit']").click()
-        await expect($(".alert-success")).toHaveTextContaining("Success")
-
-
+        await reviewPage.checkout.click() // $(".btn-success")
+        await reviewPage.typeCountry('ind')
+        await reviewPage.waitForEllipsisToDisapear()
+        await reviewPage.clickIndiaFromList()
+        await reviewPage.clickCheckoutSubmit()
+        await reviewPage.assertSuccessMessageAfterCheckout("Success")
 
     })
 })
