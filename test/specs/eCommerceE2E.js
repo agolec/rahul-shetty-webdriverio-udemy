@@ -16,15 +16,9 @@ describe('Ecommerce Application', async () => {
         await shopPage.checkout.click()
         sumOfProducts = await reviewPage.sumOfProducts()
         totalIntValue = await reviewPage.totalFormattedPrice()
-        //convert strings to integers by using the map function.
-        // const sumOfProducts = (await Promise.all(await productPrices.map((async (productPrice) => parseInt((await productPrice.getText()).split(".")[1].trim())))))
-        // .reduce((acc,price) => acc+price,0)
-        
-        // const totalValue = await $("h3 strong").getText()
-        // const totalIntValue = parseInt(totalValue.split(".")[1].trim())
 
+        await reviewPage.assertTotalsMatchWhenAdded(sumOfProducts,totalIntValue)
 
-        await expectchai(sumOfProducts).to.equal(totalIntValue)
         await $(".btn-success").click()
         await $("#country").setValue("ind")
         await $(".lds-ellipsis").waitForExist({reverse: true})
