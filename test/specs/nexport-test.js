@@ -1,16 +1,14 @@
 const expectchai = require('chai').expect
-const loginPage = require('../page-objects-rahul-shetty/loginPage')
-const shopPage = require('../page-objects-rahul-shetty/shopPage')
-const reviewPage = require('../page-objects-rahul-shetty/reviewpage')
-const fs = require('fs')
-let credentials = JSON.parse(fs.readFileSync('test/testData/LoginTest.json'))
-let productsArray = JSON.parse(fs.readFileSync('test/testData/e2eTest.json'))
+const loginPage = require('../page-objects-nexport/nexportLoginPage')
+
+//const fs = require('fs')
+//let credentials = JSON.parse(fs.readFileSync('test/testData/LoginTestNexport.json'))
 
 describe('Nexport Automation', async () => {
    
         it('Login Page', async () => {
-            await browser.url('https://portal.nexient.com/#!/home')
-            await expect(browser).toHaveTitleContaining('Nexient: Employee Portal')
+            await loginPage.NavigateToPage()
+            await loginPage.assertTitle()
             const banner = await $('p.banner-memo')
             const loginLink = await $('div.logoutInfo a')
             await expect(banner).toHaveText('Please note: Nexport Timesheets are due on Friday, '+
