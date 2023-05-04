@@ -11,18 +11,6 @@ get password()
     return $("#password")
 }
 
-// get signIn()
-// {
-//     return $("#signInBtn")
-// }
-// get alert()
-// {
-//     return $('.alert-danger')
-// }
-// get textInfo()
-// {
-//     return $('p')
-// }
 get bannerMemo(){
     return $('p.banner-memo')
 }
@@ -38,11 +26,8 @@ async Login(userName,password)
 async NavigateToPage(){
     await browser.url('https://portal.nexient.com/#!/home')
 }
-async assertBannerMemo(){
-expect(this.bannerMemo).toHaveText('Please note: Nexport Timesheets are due on Friday, '+
-                                      'December 23rd, 2022 by EOD, for the end of the '+
-                                      'December month, as Nexport will shutdown for the' +
-                                      ' NTT Data SAP Migration.')
+async assertBannerMemo(bannerMemoTxt){
+expect(this.bannerMemo).toHaveText(bannerMemoTxt)
 }
 async assertTitle(){
     await expect(browser).toHaveTitleContaining('Nexient: Employee Portal')
