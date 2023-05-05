@@ -10,25 +10,23 @@ const loginCredentials = require('../testData/loginCredentials')
 
 
 describe('Nexport Automation', async () => {
-    loginData.forEach(  ({bannerMemoText}) => {
+    loginData.forEach(  ({bannerMemoText,titleText}) => {
         it('Login Page', async () => {
             await loginPage.NavigateToPage()
-            await loginPage.assertTitle()
-            //const banner = await $('p.banner-memo')
-            const loginLink = await $('div.logoutInfo a')
+            await loginPage.assertTitle(titleText)
             await loginPage.assertBannerMemo(bannerMemoText)
-            await loginLink.click()
+            await loginPage.clickLoginLink()
             //move to login modal.
             await loginModal.assertFormDisplayed()
             await loginModal.assertFormHeaderText()
             await loginModal.login(loginCredentials.username,loginCredentials.password)
-        //     await homePage.assertBannerMemo('Please note: Nexport Timesheets are due on Friday, December 23rd, 2022 by EOD, for the end of the December month, as Nexport will shutdown for the NTT Data SAP Migration.')
-        //    await browser.pause(2000)
         })
     })
-    homePageData.forEach(({homePageBannerMemo}) => {
+    homePageData.forEach(({countOfLinks,homePageBannerMemo}) => {
         it('HomePage', async () => {
             await homePage.assertBannerMemo(homePageBannerMemo)
+            await homePage.assertNavbarLinkCount(countOfLinks)
+            await homePage.navigateToClients()
             await browser.pause(2000)
         })
 })
