@@ -27,7 +27,7 @@ async NavigateToPage(){
     await browser.url('https://portal.nexient.com/#!/home')
 }
 async assertBannerMemo(bannerMemoTxt){
-expect(this.bannerMemo).toHaveText(bannerMemoTxt)
+    await expect(this.bannerMemo).toHaveText(bannerMemoTxt)
 }
 async assertTitle(){
     await expect(browser).toHaveTitleContaining('Nexient: Employee Portal')
