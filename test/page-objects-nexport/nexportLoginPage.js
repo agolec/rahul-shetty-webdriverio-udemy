@@ -14,13 +14,13 @@ get password()
 get bannerMemo(){
     return $('p.banner-memo')
 }
+get loginLink(){
+    return $('=login')
+}
 
 //actions
-async Login(userName,password)
-{
-    await this.userName.setValue(userName)
-    await this.password.setValue(password)
-    await this.signIn.click()
+async clickLoginLink(){
+    await this.loginLink.click()
 }
 
 async NavigateToPage(){
@@ -29,8 +29,8 @@ async NavigateToPage(){
 async assertBannerMemo(bannerMemoTxt){
     await expect(this.bannerMemo).toHaveText(bannerMemoTxt)
 }
-async assertTitle(){
-    await expect(browser).toHaveTitleContaining('Nexient: Employee Portal')
+async assertTitle(titleText){
+    await expect(browser).toHaveTitleContaining(titleText)
 }
 
 }
