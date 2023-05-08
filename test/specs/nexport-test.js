@@ -2,6 +2,7 @@ const expectchai = require('chai').expect
 const loginPage = require('../page-objects-nexport/nexportLoginPage')
 const loginModal = require('../page-objects-nexport/nexportLoginModal')
 const homePage = require('../page-objects-nexport/nexportHomePage')
+const clientsPage = require('../page-objects-nexport/clientsPage')
 
 const fs = require('fs')
 let loginData = JSON.parse(fs.readFileSync('test/testData/LoginTestDataNexport.json'))
@@ -27,6 +28,9 @@ describe('Nexport Automation', async () => {
             await homePage.assertBannerMemo(homePageBannerMemo)
             await homePage.assertNavbarLinkCount(countOfLinks)
             await homePage.navigateToClients()
+            await browser.pause(2000)
+            await clientsPage.clickClient()
+            console.log('I am on line 33')
             await browser.pause(2000)
         })
 })
