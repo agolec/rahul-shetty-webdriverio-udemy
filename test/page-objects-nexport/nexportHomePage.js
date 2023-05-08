@@ -24,12 +24,16 @@ class NexPortHomePage
     }
 
     //actions
+    async navigateHome(){
+        await browser.url('https://portal.nexient.com/#!/home')
+    }
 
     async assertTitle(){
         await expect(browser).toHaveTitleContaining('Nexient: Employee Portal')
     }
 
     async assertBannerMemo(bannerMemoTxt){
+        await this.bannerMemo.waitForExist({timeout: 7000})
         await expect(await this.bannerMemo).toHaveText(bannerMemoTxt)
     }
     //use chai assertions to check that the number of elements on the page in homePageBarLinks = 6
