@@ -23,15 +23,19 @@ describe('Nexport Automation', async () => {
             await loginModal.login(loginCredentials.username,loginCredentials.password)
         })
     })
-    homePageData.forEach(({countOfLinks,homePageBannerMemo}) => {
+    homePageData.forEach(({countOfLinks,homePageBannerMemo,clientAriaLabel}) => {
         it('HomePage', async () => {
             await homePage.assertBannerMemo(homePageBannerMemo)
+            console.log('line 29')
+            //....I put .waitForExist inside the .assertNavbarLinkCount() method below but it doesn't......wait for existence of the element. It NEEDS an explicit wait. 
+            //I can't possibly explain why. Absolutely nothing works to get around this, but I have other methods where that does work correctly. This makes no sense to me.
+            await browser.pause(4000)
             await homePage.assertNavbarLinkCount(countOfLinks)
+            console.log('line 31')
             await homePage.navigateToClients()
-            await browser.pause(2000)
-            await clientsPage.clickClient()
-            console.log('I am on line 33')
-            await browser.pause(2000)
+            await clientsPage.clickClient(clientAriaLabel)
+            console.log('I am on line 36')
+            // await browser.pause(2000)
         })
 })
   
