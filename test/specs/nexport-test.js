@@ -35,12 +35,7 @@ describe('Nexport Automation', async () => {
             await clientsPage.clickClient(clientAriaLabel)
             await browser.pause(2000)
             await clientsPage.assertClientDetails(clientName, clientRegion,clientPartner,clientCoordinator,engagementLead)
-            // await clientsPage.assertClientName(clientName)
-            // await clientsPage.assertClientRegion(clientRegion)
-            // await clientsPage.assertClientPartner(clientPartner)
-            // await clientsPage.assertClientCoordinator(clientCoordinator)
-            // await clientsPage.assertEngagementLead(engagementLead)
-
+            
         })
 })
   
