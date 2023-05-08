@@ -30,11 +30,11 @@ class NexPortHomePage
     }
 
     async assertBannerMemo(bannerMemoTxt){
-        await expect(this.bannerMemo).toHaveText(bannerMemoTxt)
+        await expect(await this.bannerMemo).toHaveText(bannerMemoTxt)
     }
     //use chai assertions to check that the number of elements on the page in homePageBarLinks = 6
     async assertNavbarLinkCount(countOfElements){
-        await this.homePageBarLinks[0].waitForExist()
+        await this.homePageBarLinks[0].waitForExist({timeout: 5000})
         await expectchai(await this.homePageBarLinks.length).to.equal(countOfElements)
     }
 
@@ -43,6 +43,7 @@ class NexPortHomePage
     }
 
     async navigateToClients(){
+        await this.homePageBarLinks[0].waitForExist({timeout:3000})
         await this.homePageBarLinks[3].click()
     }
 
