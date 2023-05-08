@@ -1,4 +1,5 @@
 [{
     "countOfLinks": 6,
-    "homePageBannerMemo": "Please note: Nexport Timesheets are due on Friday, December 23rd, 2022 by EOD, for the end of the December month, as Nexport will shutdown for the NTT Data SAP Migration."
-}]
+    "homePageBannerMemo": "Please note: Nexport Timesheets are due on Friday, December 23rd, 2022 by EOD, for the end of the December month, as Nexport will shutdown for the NTT Data SAP Migration.",
+    "clientAriaLabel": "[aria-label='AccessOne']"
+    }]
