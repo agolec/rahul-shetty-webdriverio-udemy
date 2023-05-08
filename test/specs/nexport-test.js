@@ -24,7 +24,7 @@ describe('Nexport Automation', async () => {
         })
     })
     homePageData.forEach(({countOfLinks,homePageBannerMemo,clientAriaLabel,clientName,clientRegion,clientPartner,clientCoordinator,engagementLead}) => {
-        it('HomePage', async () => {
+        it('HomePage into clicking on specific clients.', async () => {
             //await homePage.navigateHome() //check if this breaks anything. Need this in order to parameterize HomePage tests.
             await homePage.assertBannerMemo(homePageBannerMemo)
             //....I put .waitForExist inside the .assertNavbarLinkCount() method below but it doesn't......wait for existence of the element. It NEEDS an explicit wait. 
@@ -33,7 +33,6 @@ describe('Nexport Automation', async () => {
             await homePage.assertNavbarLinkCount(countOfLinks)
             await homePage.navigateToClients()
             await clientsPage.clickClient(clientAriaLabel)
-            await browser.pause(2000)
             await clientsPage.assertClientDetails(clientName, clientRegion,clientPartner,clientCoordinator,engagementLead)
             
         })
