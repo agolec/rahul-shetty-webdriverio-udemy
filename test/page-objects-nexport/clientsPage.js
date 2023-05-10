@@ -7,7 +7,6 @@ class ClientsPage
         return $$("span.md-subhead")
     }
     get specificClient(){
-        //$('span=')
         return $('span.md-subhead')
     }
     
@@ -32,7 +31,7 @@ class ClientsPage
     
     //prototype for element to click on a specific client.
     async clickClient(clientAriaLbl){
-        await this.specificClient.waitForExist({timeout: 6000})
+        //await this.anchors.waitForDisplayed({timeout: 3000})
         //could not make this work through a named method.
         await $(clientAriaLbl).click()
         await browser.pause(4000)
