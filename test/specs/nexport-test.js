@@ -29,9 +29,16 @@ describe('Nexport Automation', async () => {
             await homePage.assertBannerMemo(homePageBannerMemo)
             //....I put .waitForExist inside the .assertNavbarLinkCount() method below but it doesn't......wait for existence of the element. It NEEDS an explicit wait. 
             //I can't possibly explain why. Absolutely nothing works to get around this, but I have other methods where that does work correctly. This makes no sense to me.
-            await browser.pause(4000)
+            //await browser.pause(4000)
             await homePage.assertNavbarLinkCount(countOfLinks)
             await homePage.navigateToClients()
+            //none of the built in webdriver.io methods meant to prevent me from
+            //using a wait are doing what they are designed to do.
+            //That is the best explaination I can give for why I need this wait. I will not argue it.
+            //The test still continues running, which indicates to me it found the element, but it
+            //continues to complain that it couldn't find it, in a weird paradox that makes no sense to me, unless
+            //I add manual waits. I can't understand this.
+            //await browser.pause(3000)
             await clientsPage.clickClient(clientAriaLabel)
             await clientsPage.assertClientDetails(clientName, clientRegion,clientPartner,clientCoordinator,engagementLead)
             
