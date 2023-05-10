@@ -25,6 +25,7 @@ class LoginPage
 
     async NavigateToPage(){
         await browser.url('https://portal.nexient.com/#!/home')
+        await browser.maximizeWindow()
     }
     async assertBannerMemo(bannerMemoTxt){
         await expect(this.bannerMemo).toHaveText(bannerMemoTxt)
