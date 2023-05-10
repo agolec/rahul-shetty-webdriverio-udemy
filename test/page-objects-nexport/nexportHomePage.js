@@ -14,6 +14,9 @@ class NexPortHomePage
     {
         return $$('md-toolbar a')
     }
+    get clientAnchor(){
+        return $('[aria-label="View Client Workflow"]')
+    }
 
     get logout(){
         return $("button[aria-label='Logout']")
@@ -33,13 +36,12 @@ class NexPortHomePage
     }
 
     async assertBannerMemo(bannerMemoTxt){
-        await this.bannerMemo.waitForExist({timeout: 7000})
         await expect(await this.bannerMemo).toHaveText(bannerMemoTxt)
     }
     //use chai assertions to check that the number of elements on the page in homePageBarLinks = 6
     async assertNavbarLinkCount(countOfElements){
-        await this.homePageBarLinks[0].waitForExist({timeout: 5000})
-        await expectchai(await this.homePageBarLinks.length).to.equal(countOfElements)
+        await this.clientAnchor.waitForExist({timeout: 5000})
+        expectchai(await this.homePageBarLinks.length).to.equal(countOfElements)
     }
 
     async navigateToHome(){
